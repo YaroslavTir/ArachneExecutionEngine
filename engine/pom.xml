@@ -621,6 +621,16 @@
             </build>
         </profile>
         <profile>
+            <id>iris</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.intersystems</groupId>
+                    <artifactId>intersystems-jdbc</artifactId>
+                    <version>3.8.4</version>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
             <id>snowflake</id>
             <properties>
                 <snowflake.enabled>true</snowflake.enabled>
