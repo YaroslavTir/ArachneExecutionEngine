@@ -44,6 +44,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import javax.validation.Valid;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -126,6 +128,16 @@ public class AnalysisController {
             @RequestHeader(value = "arachne-result-chunk-size-mb", defaultValue = "10485760") Long chunkSize
     ) throws IOException {
 
+        String dataSourceName = analysisRequest.getDataSource().getName();
+        if (StringUtils.containsIgnoreCase(dataSourceName, "plp")) {
+            analysisRequest.setRequestedDescriptorId("hydra_plp_iris_0.0.1");
+            log.info("Set requested descriptor ID to: hydra_plp_iris_0.0.1 for data source: {}", dataSourceName);
+        } else if (StringUtils.containsIgnoreCase(dataSourceName, "ple")) {
+            analysisRequest.setRequestedDescriptorId("hydra_ple_iris_0.0.1");
+            log.info("Set requested descriptor ID to: hydra_ple_iris_0.0.1 for data source: {}", dataSourceName);
+        } else {
+            log.warn("No matching descriptor ID found for data source: {}", dataSourceName);
+        }
         Long id = analysisRequest.getId();
         try {
             log.info("Request [{}] for [{}] received", id, analysisRequest.getResultCallback());
