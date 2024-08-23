@@ -35,7 +35,7 @@
         <postgresql.version>42.3.9</postgresql.version>
         <snakeyaml.version>1.33</snakeyaml.version>
         <docker-java.version>3.3.4</docker-java.version>
-
+        <SqlRender.version>1.16.1-IRIS-SNAPSHOT</SqlRender.version>
     </properties>
 
     <dependencies>
@@ -159,7 +159,7 @@
         <dependency>
             <groupId>org.ohdsi.sql</groupId>
             <artifactId>SqlRender</artifactId>
-            <version>1.12.1</version>
+            <version>${SqlRender.version}</version>
         </dependency>
 
         <dependency>
